@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T00:50:15Z",
+  "updated_at": "2026-11-27T01:12:20Z",
   "count": 24,
   "items": [
     {
@@ -9,7 +9,7 @@
       "source": "GitHub",
       "category": "AI Skills",
       "score": 9,
-      "stars_or_votes": 479776,
+      "stars_or_votes": 479801,
       "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Reverse engineer anything with agents, from app behavior down to native binaries.",
       "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
       "tags": [
@@ -17,8 +17,8 @@
         "TypeScript",
         "ai"
       ],
-      "published_at": "2026-11-27T00:49:29Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "published_at": "2026-11-27T00:55:00Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -28,7 +28,7 @@
       "source": "GitHub",
       "category": "AI Skills",
       "score": 9,
-      "stars_or_votes": 212311,
+      "stars_or_votes": 212313,
       "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
       "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
       "tags": [
@@ -37,7 +37,7 @@
         "ai"
       ],
       "published_at": "2026-11-27T00:48:27Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -55,8 +55,8 @@
         "Python",
         "agent"
       ],
-      "published_at": "2026-11-27T00:40:23Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "published_at": "2026-11-27T00:54:17Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -66,7 +66,7 @@
       "source": "GitHub",
       "category": "AI Skills",
       "score": 9,
-      "stars_or_votes": 159646,
+      "stars_or_votes": 159648,
       "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
       "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
       "tags": [
@@ -75,7 +75,7 @@
         "ai"
       ],
       "published_at": "2026-11-27T00:38:20Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -85,7 +85,7 @@
       "source": "GitHub",
       "category": "AI Skills",
       "score": 9,
-      "stars_or_votes": 157424,
+      "stars_or_votes": 157428,
       "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode,DeepSeek Harness and more. Only official website: ccswitch.io",
       "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
       "tags": [
@@ -94,7 +94,7 @@
         "claude-code"
       ],
       "published_at": "2026-11-26T15:08:16Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -104,7 +104,7 @@
       "source": "GitHub",
       "category": "AI Skills",
       "score": 9,
-      "stars_or_votes": 122155,
+      "stars_or_votes": 122157,
       "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
       "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
       "tags": [
@@ -113,7 +113,7 @@
         "ai-agents"
       ],
       "published_at": "2026-11-26T23:16:54Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -123,14 +123,14 @@
       "source": "HN",
       "category": "Mẹo & Thủ thuật",
       "score": 9,
-      "stars_or_votes": 1978,
+      "stars_or_votes": 1981,
       "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] See also The matrix multiplication exponent is nine fourths [pdf] - https://news.ycombinator.com/item?id=50637220",
       "use_case_vi": "Áp dụng ngay các bước hướng dẫn trong bài để tối ưu quy trình làm việc và hiệu suất kỹ thuật.",
       "tags": [
         "hackernews"
       ],
       "published_at": "2026-11-25T19:11:27Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -140,14 +140,14 @@
       "source": "HN",
       "category": "Mẹo & Thủ thuật",
       "score": 9,
-      "stars_or_votes": 1631,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Hacker News story with 1631 points and 703 comments.",
+      "stars_or_votes": 1632,
+      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Hacker News story with 1632 points and 703 comments.",
       "use_case_vi": "Áp dụng ngay các bước hướng dẫn trong bài để tối ưu quy trình làm việc và hiệu suất kỹ thuật.",
       "tags": [
         "hackernews"
       ],
       "published_at": "2026-11-25T17:18:26Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -164,7 +164,7 @@
         "hackernews"
       ],
       "published_at": "2026-11-25T01:19:26Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -181,7 +181,7 @@
         "hackernews"
       ],
       "published_at": "2026-11-25T03:23:07Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -198,7 +198,7 @@
         "hackernews"
       ],
       "published_at": "2026-11-26T03:36:58Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -208,14 +208,14 @@
       "source": "HN",
       "category": "Phần mềm miễn phí",
       "score": 8,
-      "stars_or_votes": 394,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Hacker News story with 394 points and 201 comments.",
+      "stars_or_votes": 395,
+      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Hacker News story with 395 points and 201 comments.",
       "use_case_vi": "Cài đặt thử nghiệm hoặc tự triển khai (self-host) để thay thế các phần mềm trả phí hằng ngày.",
       "tags": [
         "hackernews"
       ],
       "published_at": "2026-11-26T11:50:49Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -234,7 +234,7 @@
         "claude"
       ],
       "published_at": "2026-11-25T04:03:43Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -253,7 +253,7 @@
         "career"
       ],
       "published_at": "2026-11-24T04:00:44Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -272,7 +272,7 @@
         "github"
       ],
       "published_at": "2026-11-24T16:30:00Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -291,7 +291,7 @@
         "watercooler"
       ],
       "published_at": "2026-11-26T08:03:09Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -310,7 +310,7 @@
         "discuss"
       ],
       "published_at": "2026-11-26T06:33:35Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -329,7 +329,7 @@
         "ai"
       ],
       "published_at": "2026-11-24T07:00:00Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -348,7 +348,7 @@
         "GitHub Copilot"
       ],
       "published_at": "2026-11-25T15:00:00Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -367,7 +367,7 @@
         "claude"
       ],
       "published_at": "2026-11-26T15:09:31Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -386,7 +386,7 @@
         "llms"
       ],
       "published_at": "2026-11-25T23:26:32Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -405,7 +405,7 @@
         "visualization"
       ],
       "published_at": "2026-11-25T18:16:50Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -424,7 +424,7 @@
         "my-talks"
       ],
       "published_at": "2026-11-24T23:02:07Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
     {
@@ -443,7 +443,7 @@
         "Engineering principles"
       ],
       "published_at": "2026-11-17T18:20:40Z",
-      "fetched_at": "2026-11-27T00:50:03Z",
+      "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     }
   ]
