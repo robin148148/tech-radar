@@ -344,7 +344,9 @@ def curate_items(
         return [], True
 
     cur_cfg = config.get("curation", {})
-    model_name = cur_cfg.get("model", "gemini-2.5-flash")
+    model_name = cur_cfg.get("model", "gemini-3.8-flash")
+    fallback_models = cur_cfg.get("fallback_models", ["gemini-2.5-flash"])
+    models_to_try = list(dict.fromkeys([model_name] + list(fallback_models)))
     max_candidates = int(cur_cfg.get("max_candidates", 45))
     min_score = int(cur_cfg.get("min_score", 7))
 
@@ -364,15 +366,26 @@ def curate_items(
         client = genai.Client(api_key=api_key)
         prompt = _build_gemini_prompt(shortlist, min_score=min_score)
 
-        logger.info("Calling Gemini API (%s) with %d candidates...", model_name, len(shortlist))
-        response = client.models.generate_content(
-            model=model_name,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                temperature=0.2,
-            ),
-        )
+        response = None
+        last_exc: Exception | None = None
+        for m_name in models_to_try:
+            try:
+                logger.info("Calling Gemini API (%s) with %d candidates...", m_name, len(shortlist))
+                response = client.models.generate_content(
+                    model=m_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json",
+                        temperature=0.2,
+                    ),
+                )
+                break
+            except Exception as model_exc:
+                last_exc = model_exc
+                logger.warning("Model '%s' failed (%s). Trying next model if available...", m_name, model_exc)
+
+        if response is None:
+            raise last_exc or RuntimeError("All configured Gemini models failed.")
 
         raw_ai_items = _parse_json_response(response.text or "")
         by_id = {c["id"]: c for c in shortlist}
