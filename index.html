@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="vi" class="antialiased">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tech Radar - Hệ thống săn Repo GitHub, Phần mềm miễn phí (FOSS), AI Skills và Mẹo/Thủ thuật thực chiến tự động mỗi ngày." />
+  <title>Tech Radar — Săn Repo, FOSS, AI Skills &amp; Thủ thuật</title>
+
+  <!-- Prevent dark-mode flash before Tailwind loads -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem('tech_radar_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Hide scrollbar cleanly for horizontal category pills on mobile */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Clamp helpers for reliable text truncation */
+    .clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .clamp-4 {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200 overflow-x-hidden">
+  <!-- Top Sticky Header -->
+  <header class="sticky top-0 z-30 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 flex items-center justify-center shadow-sm shadow-indigo-500/25">
+          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" opacity="0.45"></circle>
+            <circle cx="12" cy="12" r="5" opacity="0.75"></circle>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+            <path d="M12 12L18.5 5.5"></path>
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold tracking-tight truncate">Tech Radar</h1>
+            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-indigo-50 text-indigo-700 dark:bg-indigo-950/70 dark:text-indigo-300 border border-indigo-200/70 dark:border-indigo-800/60">
+              AI Curated
+            </span>
+          </div>
+          <p id="lastUpdatedHeader" class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">
+            Đang tải dữ liệu...
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <button
+          id="refreshBtn"
+          type="button"
+          title="Tải lại dữ liệu"
+          aria-label="Tải lại dữ liệu"
+          class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
+            <polyline points="21 3 21 9 15 9"></polyline>
+          </svg>
+        </button>
+
+        <button
+          id="themeToggle"
+          type="button"
+          title="Chuyển giao diện Sáng / Tối"
+          aria-label="Chuyển giao diện Sáng / Tối"
+          class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          <!-- Sun icon (shown in dark mode) -->
+          <svg id="sunIcon" class="w-4 h-4 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg id="moonIcon" class="w-4 h-4 block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3 View Tabs -->
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 pb-2.5">
+      <nav aria-label="Chế độ xem" class="grid grid-cols-3 gap-1 sm:gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800">
+        <button
+          type="button"
+          data-tab="latest"
+          class="tab-btn flex items-center justify-center gap-1 sm:gap-1.5 px-1.5 sm:px-2.5 py-2 rounded-lg text-[11px] sm:text-sm font-semibold transition-all min-w-0"
+        >
+          <svg class="hidden sm:block w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+          </svg>
+          <span class="truncate">Mới hôm nay</span>
+          <span id="countLatest" class="shrink-0 px-1.5 py-0.5 rounded-full text-[10px] sm:text-[11px] bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">0</span>
+        </button>
+
+        <button
+          type="button"
+          data-tab="archive"
+          class="tab-btn flex items-center justify-center gap-1 sm:gap-1.5 px-1.5 sm:px-2.5 py-2 rounded-lg text-[11px] sm:text-sm font-semibold transition-all min-w-0"
+        >
+          <svg class="hidden sm:block w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+          <span class="truncate">Kho báu đã lọc</span>
+          <span id="countArchive" class="shrink-0 px-1.5 py-0.5 rounded-full text-[10px] sm:text-[11px] bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">0</span>
+        </button>
+
+        <button
+          type="button"
+          data-tab="saved"
+          class="tab-btn flex items-center justify-center gap-1 sm:gap-1.5 px-1.5 sm:px-2.5 py-2 rounded-lg text-[11px] sm:text-sm font-semibold transition-all min-w-0"
+        >
+          <svg class="hidden sm:block w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="truncate">Đã lưu</span>
+          <span id="countSaved" class="shrink-0 px-1.5 py-0.5 rounded-full text-[10px] sm:text-[11px] bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
+    <!-- Fallback Notice Banner (shown only when data is uncurated fallback) -->
+    <div id="fallbackBanner" class="hidden rounded-xl border border-amber-200 dark:border-amber-900/70 bg-amber-50/90 dark:bg-amber-950/40 px-3.5 py-2.5 text-xs sm:text-sm text-amber-800 dark:text-amber-300 flex items-start gap-2.5">
+      <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <p class="min-w-0 break-words">
+        Dữ liệu hiện tại đang chạy ở <strong>chế độ lọc thô (chưa qua Gemini AI)</strong>. Hãy thêm <code class="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/60 font-mono text-[11px]">GEMINI_API_KEY</code> vào GitHub Secrets để bật chấm điểm và tóm tắt tiếng Việt tự động.
+      </p>
+    </div>
+
+    <!-- Search, Source & Sort Controls -->
+    <section aria-label="Bộ lọc và tìm kiếm" class="space-y-3">
+      <div class="flex flex-col md:flex-row gap-2.5">
+        <!-- Search Input -->
+        <div class="relative flex-1 min-w-0">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Tìm theo tên, tóm tắt, tag... (nhấn /)"
+            autocomplete="off"
+            class="w-full pl-10 pr-9 py-2.5 rounded-xl text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-shadow"
+          />
+          <button
+            id="clearSearchBtn"
+            type="button"
+            aria-label="Xóa từ khóa"
+            class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded-md text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Source & Sort Selects -->
+        <div class="grid grid-cols-2 sm:flex gap-2 shrink-0">
+          <select
+            id="sourceSelect"
+            aria-label="Lọc theo nguồn"
+            class="px-3 py-2.5 rounded-xl text-xs sm:text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+          >
+            <option value="all">Tất cả nguồn</option>
+            <option value="GitHub">GitHub</option>
+            <option value="HN">Hacker News</option>
+            <option value="Reddit">Reddit</option>
+            <option value="Dev.to">Dev.to</option>
+            <option value="RSS">RSS / Blog</option>
+          </select>
+
+          <select
+            id="sortSelect"
+            aria-label="Sắp xếp"
+            class="px-3 py-2.5 rounded-xl text-xs sm:text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+          >
+            <option value="score">Điểm AI cao nhất</option>
+            <option value="newest">Mới nhất</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div id="categoryBar" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-0.5">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- Status Summary Row -->
+    <div class="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2 min-w-0">
+        <span>Hiển thị <strong id="resultCount" class="text-slate-900 dark:text-slate-100">0</strong> mục</span>
+        <span id="activeFilterSummary" class="hidden sm:inline truncate text-slate-400 dark:text-slate-500"></span>
+      </div>
+      <button
+        id="resetFiltersBtn"
+        type="button"
+        class="hidden text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
+      >
+        Xóa bộ lọc
+      </button>
+    </div>
+
+    <!-- Loading Skeleton -->
+    <div id="loadingState" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div class="h-60 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 animate-pulse p-5"></div>
+      <div class="h-60 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 animate-pulse p-5"></div>
+      <div class="h-60 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 animate-pulse p-5 hidden md:block"></div>
+    </div>
+
+    <!-- Cards Grid -->
+    <section id="cardsGrid" aria-label="Danh sách công cụ và bài viết" class="hidden grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    </section>
+
+    <!-- Empty State -->
+    <section id="emptyState" class="hidden rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-8 sm:p-12 text-center">
+      <div class="mx-auto w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 mb-3">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+      <h2 id="emptyTitle" class="text-base font-semibold text-slate-900 dark:text-slate-100">Không tìm thấy mục phù hợp</h2>
+      <p id="emptyDesc" class="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+        Thử thay đổi từ khóa tìm kiếm hoặc đặt lại bộ lọc danh mục và nguồn.
+      </p>
+      <button
+        id="emptyActionBtn"
+        type="button"
+        class="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
+      >
+        Đặt lại bộ lọc
+      </button>
+    </section>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-3 sm:px-6 py-8 mt-6 border-t border-slate-200/70 dark:border-slate-800/70 text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>Tech Radar — Kiến trúc Zero-Server vận hành bằng GitHub Actions, Gemini AI &amp; GitHub Pages.</p>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-2 transition-all duration-200 px-4 py-2 rounded-xl bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs sm:text-sm font-medium shadow-lg"
+  ></div>
+
+  <!-- Optional local data mirror so opening index.html directly via file:// works without CORS -->
+  <script src="data/bundle.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const CATEGORIES = [
+        'Tất cả',
+        'Repo/Code',
+        'Phần mềm miễn phí',
+        'AI Skills',
+        'Mẹo & Thủ thuật',
+      ];
+
+      const BOOKMARKS_KEY = 'tech_radar_bookmarks_v1';
+
+      const state = {
+        activeTab: 'latest',
+        category: 'Tất cả',
+        source: 'all',
+        sort: 'score',
+        query: '',
+        latestData: { updated_at: null, is_curated: true, items: [] },
+        archiveData: { updated_at: null, items: [] },
+        bookmarks: loadBookmarks(),
+      };
+
+      // DOM elements
+      const els = {
+        lastUpdatedHeader: document.getElementById('lastUpdatedHeader'),
+        fallbackBanner: document.getElementById('fallbackBanner'),
+        countLatest: document.getElementById('countLatest'),
+        countArchive: document.getElementById('countArchive'),
+        countSaved: document.getElementById('countSaved'),
+        searchInput: document.getElementById('searchInput'),
+        clearSearchBtn: document.getElementById('clearSearchBtn'),
+        sourceSelect: document.getElementById('sourceSelect'),
+        sortSelect: document.getElementById('sortSelect'),
+        categoryBar: document.getElementById('categoryBar'),
+        resultCount: document.getElementById('resultCount'),
+        activeFilterSummary: document.getElementById('activeFilterSummary'),
+        resetFiltersBtn: document.getElementById('resetFiltersBtn'),
+        loadingState: document.getElementById('loadingState'),
+        cardsGrid: document.getElementById('cardsGrid'),
+        emptyState: document.getElementById('emptyState'),
+        emptyTitle: document.getElementById('emptyTitle'),
+        emptyDesc: document.getElementById('emptyDesc'),
+        emptyActionBtn: document.getElementById('emptyActionBtn'),
+        themeToggle: document.getElementById('themeToggle'),
+        refreshBtn: document.getElementById('refreshBtn'),
+        toast: document.getElementById('toast'),
+        tabButtons: Array.from(document.querySelectorAll('.tab-btn')),
+      };
+
+      function loadBookmarks() {
+        try {
+          const raw = localStorage.getItem(BOOKMARKS_KEY);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveBookmarks() {
+        try {
+          localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(state.bookmarks));
+        } catch {
+          showToast('Không thể lưu vào LocalStorage của trình duyệt.');
+        }
+      }
+
+      function isBookmarked(id) {
+        return state.bookmarks.some((b) => b.id === id);
+      }
+
+      function toggleBookmark(item) {
+        const idx = state.bookmarks.findIndex((b) => b.id === item.id);
+        if (idx >= 0) {
+          state.bookmarks.splice(idx, 1);
+          showToast('Đã bỏ khỏi danh sách Đã lưu');
+        } else {
+          state.bookmarks.unshift({ ...item, saved_at: new Date().toISOString() });
+          showToast('Đã lưu vào mục Đã lưu');
+        }
+        saveBookmarks();
+        updateTabCounts();
+        render();
+      }
+
+      let toastTimer = null;
+      function showToast(msg) {
+        els.toast.textContent = msg;
+        els.toast.classList.remove('opacity-0', 'translate-y-2');
+        els.toast.classList.add('opacity-100', 'translate-y-0');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          els.toast.classList.add('opacity-0', 'translate-y-2');
+          els.toast.classList.remove('opacity-100', 'translate-y-0');
+        }, 2100);
+      }
+
+      function escapeHtml(str) {
+        return String(str ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function safeUrl(url) {
+        try {
+          const parsed = new URL(url);
+          if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+            return parsed.href;
+          }
+        } catch {
+          // ignore
+        }
+        return '#';
+      }
+
+      function formatNumber(n) {
+        const num = Number(n) || 0;
+        if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+        return String(num);
+      }
+
+      function formatRelativeTime(isoStr) {
+        if (!isoStr) return '';
+        const date = new Date(isoStr);
+        if (Number.isNaN(date.getTime())) return '';
+        const diffSec = Math.max(0, Math.floor((Date.now() - date.getTime()) / 1000));
+        if (diffSec < 60) return 'vừa xong';
+        const diffMin = Math.floor(diffSec / 60);
+        if (diffMin < 60) return `${diffMin} phút trước`;
+        const diffHour = Math.floor(diffMin / 60);
+        if (diffHour < 24) return `${diffHour} giờ trước`;
+        const diffDay = Math.floor(diffHour / 24);
+        if (diffDay < 30) return `${diffDay} ngày trước`;
+        return date.toLocaleDateString('vi-VN');
+      }
+
+      function formatUpdatedHeader(isoStr) {
+        if (!isoStr) return 'Chưa có dữ liệu cập nhật';
+        const date = new Date(isoStr);
+        if (Number.isNaN(date.getTime())) return 'Chưa có dữ liệu cập nhật';
+        const formatted = date.toLocaleString('vi-VN', {
+          hour: '2-digit',
+          minute: '2-digit',
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+        });
+        return `Cập nhật: ${formatted} (${formatRelativeTime(isoStr)})`;
+      }
+
+      function getCategoryStyle(category) {
+        switch (category) {
+          case 'Repo/Code':
+            return 'bg-indigo-50 text-indigo-700 border-indigo-200/80 dark:bg-indigo-950/60 dark:text-indigo-300 dark:border-indigo-800/70';
+          case 'Phần mềm miễn phí':
+            return 'bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800/70';
+          case 'AI Skills':
+            return 'bg-purple-50 text-purple-700 border-purple-200/80 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800/70';
+          case 'Mẹo & Thủ thuật':
+            return 'bg-amber-50 text-amber-800 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800/70';
+          default:
+            return 'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700';
+        }
+      }
+
+      function getScoreBadgeStyle(score) {
+        const s = Number(score) || 0;
+        if (s >= 9) {
+          return 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/35';
+        }
+        if (s >= 8) {
+          return 'bg-blue-500/15 text-blue-700 dark:text-blue-300 ring-1 ring-blue-500/35';
+        }
+        return 'bg-slate-500/15 text-slate-700 dark:text-slate-300 ring-1 ring-slate-500/30';
+      }
+
+      function getSourceIcon(source) {
+        if (source === 'GitHub') {
+          return `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.94c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>`;
+        }
+        return `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+      }
+
+      function normalizePayload(raw) {
+        if (Array.isArray(raw)) {
+          return { updated_at: null, is_curated: true, items: raw };
+        }
+        if (raw && typeof raw === 'object') {
+          return {
+            updated_at: raw.updated_at || null,
+            is_curated: raw.is_curated !== false,
+            items: Array.isArray(raw.items) ? raw.items : [],
+          };
+        }
+        return { updated_at: null, is_curated: true, items: [] };
+      }
+
+      async function fetchJsonSafe(path) {
+        try {
+          const resp = await fetch(`${path}?t=${Date.now()}`, { cache: 'no-store' });
+          if (!resp.ok) return null;
+          return await resp.json();
+        } catch {
+          return null;
+        }
+      }
+
+      async function loadAllData() {
+        els.loadingState.classList.remove('hidden');
+        els.cardsGrid.classList.add('hidden');
+        els.emptyState.classList.add('hidden');
+
+        let latestRaw = null;
+        let archiveRaw = null;
+
+        if (window.location.protocol !== 'file:') {
+          [latestRaw, archiveRaw] = await Promise.all([
+            fetchJsonSafe('data/latest.json'),
+            fetchJsonSafe('data/archive.json'),
+          ]);
+        }
+
+        // Fallback sang data/bundle.js khi mở trực tiếp index.html qua file:// (tránh CORS)
+        const embedded = window.__TECH_RADAR_DATA__;
+        if (!latestRaw && embedded && embedded.latest) {
+          latestRaw = embedded.latest;
+        }
+        if (!archiveRaw && embedded && embedded.archive) {
+          archiveRaw = embedded.archive;
+        }
+
+        state.latestData = normalizePayload(latestRaw);
+        state.archiveData = normalizePayload(archiveRaw);
+
+        const updatedAt = state.latestData.updated_at || state.archiveData.updated_at;
+        els.lastUpdatedHeader.textContent = formatUpdatedHeader(updatedAt);
+
+        const hasUncurated =
+          state.latestData.is_curated === false ||
+          state.latestData.items.some((i) => i.is_curated === false);
+        els.fallbackBanner.classList.toggle('hidden', !hasUncurated || state.latestData.items.length === 0);
+
+        updateTabCounts();
+        els.loadingState.classList.add('hidden');
+        render();
+      }
+
+      function getCurrentBaseItems() {
+        if (state.activeTab === 'latest') return state.latestData.items;
+        if (state.activeTab === 'archive') return state.archiveData.items;
+        return state.bookmarks;
+      }
+
+      function getFilteredItems() {
+        const base = getCurrentBaseItems();
+        const q = state.query.trim().toLowerCase();
+
+        const filtered = base.filter((item) => {
+          if (state.category !== 'Tất cả' && item.category !== state.category) {
+            return false;
+          }
+          if (state.source !== 'all' && item.source !== state.source) {
+            return false;
+          }
+          if (q) {
+            const haystack = [
+              item.title,
+              item.summary_vi,
+              item.use_case_vi,
+              item.source,
+              item.category,
+              ...(Array.isArray(item.tags) ? item.tags : []),
+            ]
+              .join(' ')
+              .toLowerCase();
+            if (!haystack.includes(q)) return false;
+          }
+          return true;
+        });
+
+        filtered.sort((a, b) => {
+          if (state.sort === 'newest') {
+            const ta = new Date(a.published_at || a.fetched_at || 0).getTime();
+            const tb = new Date(b.published_at || b.fetched_at || 0).getTime();
+            if (tb !== ta) return tb - ta;
+            return (Number(b.score) || 0) - (Number(a.score) || 0);
+          }
+          const scoreDiff = (Number(b.score) || 0) - (Number(a.score) || 0);
+          if (scoreDiff !== 0) return scoreDiff;
+          return (Number(b.stars_or_votes) || 0) - (Number(a.stars_or_votes) || 0);
+        });
+
+        return filtered;
+      }
+
+      function updateTabCounts() {
+        els.countLatest.textContent = String(state.latestData.items.length);
+        els.countArchive.textContent = String(state.archiveData.items.length);
+        els.countSaved.textContent = String(state.bookmarks.length);
+      }
+
+      function renderTabs() {
+        els.tabButtons.forEach((btn) => {
+          const active = btn.dataset.tab === state.activeTab;
+          btn.classList.toggle('bg-white', active);
+          btn.classList.toggle('dark:bg-slate-800', active);
+          btn.classList.toggle('text-indigo-600', active);
+          btn.classList.toggle('dark:text-indigo-300', active);
+          btn.classList.toggle('shadow-sm', active);
+          btn.classList.toggle('text-slate-600', !active);
+          btn.classList.toggle('dark:text-slate-400', !active);
+          btn.classList.toggle('hover:text-slate-900', !active);
+          btn.classList.toggle('dark:hover:text-slate-200', !active);
+          btn.setAttribute('aria-selected', String(active));
+        });
+      }
+
+      function renderCategoryBar() {
+        const base = getCurrentBaseItems();
+        const counts = { 'Tất cả': base.length };
+        for (const item of base) {
+          counts[item.category] = (counts[item.category] || 0) + 1;
+        }
+
+        els.categoryBar.innerHTML = CATEGORIES.map((cat) => {
+          const active = state.category === cat;
+          const cnt = counts[cat] || 0;
+          const activeCls =
+            'bg-slate-900 text-white border-slate-900 dark:bg-indigo-600 dark:border-indigo-500 dark:text-white shadow-sm';
+          const idleCls =
+            'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800';
+          return `
+            <button
+              type="button"
+              data-category="${escapeHtml(cat)}"
+              class="cat-pill shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition-colors ${active ? activeCls : idleCls}"
+            >
+              <span>${escapeHtml(cat)}</span>
+              <span class="text-[11px] opacity-75">(${cnt})</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      function buildCardHtml(item) {
+        const saved = isBookmarked(item.id);
+        const href = safeUrl(item.url);
+        const tags = Array.isArray(item.tags) ? item.tags.slice(0, 3) : [];
+        const votes = Number(item.stars_or_votes) || 0;
+        const relTime = formatRelativeTime(item.published_at || item.fetched_at);
+
+        return `
+          <article class="group flex flex-col justify-between min-w-0 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/85 dark:border-slate-800 p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-indigo-300/80 dark:hover:border-indigo-700/80 transition-all">
+            <div class="min-w-0 space-y-3">
+              <!-- Top badges row -->
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 flex-wrap min-w-0">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${getCategoryStyle(item.category)}">
+                    ${escapeHtml(item.category || 'Repo/Code')}
+                  </span>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    ${getSourceIcon(item.source)}
+                    <span>${escapeHtml(item.source || 'RSS')}</span>
+                  </span>
+                  ${votes > 0 ? `
+                    <span class="inline-flex items-center gap-0.5 text-[11px] font-medium text-slate-500 dark:text-slate-400" title="Stars / Votes">
+                      <svg class="w-3 h-3 text-amber-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      ${formatNumber(votes)}
+                    </span>
+                  ` : ''}
+                </div>
+
+                <span class="shrink-0 inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold ${getScoreBadgeStyle(item.score)}" title="Điểm chất lượng AI">
+                  ${escapeHtml(item.score)}/10
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h2 class="text-base font-bold leading-snug text-slate-900 dark:text-slate-50 min-w-0">
+                <a
+                  href="${escapeHtml(href)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="clamp-2 break-words hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >
+                  ${escapeHtml(item.title)}
+                </a>
+              </h2>
+
+              <!-- Summary VI -->
+              <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300 clamp-4 break-words">
+                ${escapeHtml(item.summary_vi)}
+              </p>
+
+              <!-- Practical Use Case -->
+              <div class="rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 p-3">
+                <div class="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-indigo-600 dark:text-indigo-400 mb-1">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                  </svg>
+                  <span>Ứng dụng thực tế</span>
+                </div>
+                <p class="text-xs sm:text-[13px] leading-relaxed text-slate-700 dark:text-slate-200 break-words">
+                  ${escapeHtml(item.use_case_vi)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Footer: Tags + Actions -->
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-3">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap min-w-0">
+                  ${tags
+                    .map(
+                      (t) => `
+                    <button
+                      type="button"
+                      data-tag="${escapeHtml(t)}"
+                      class="tag-chip max-w-[140px] truncate px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-indigo-50 hover:text-indigo-700 dark:hover:bg-indigo-950 dark:hover:text-indigo-300 transition-colors"
+                    >#${escapeHtml(t)}</button>
+                  `
+                    )
+                    .join('')}
+                </div>
+                <span class="text-[11px] text-slate-400 dark:text-slate-500 shrink-0">${escapeHtml(relTime)}</span>
+              </div>
+
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    data-action="copy"
+                    data-url="${escapeHtml(href)}"
+                    class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    title="Sao chép liên kết"
+                  >
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span>Chép link</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-action="bookmark"
+                    data-id="${escapeHtml(item.id)}"
+                    class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                      saved
+                        ? 'border-indigo-500/50 bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300'
+                        : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                    }"
+                    title="${saved ? 'Bỏ lưu' : 'Lưu lại xem sau'}"
+                  >
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="${saved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span>${saved ? 'Đã lưu' : 'Lưu'}</span>
+                  </button>
+                </div>
+
+                <a
+                  href="${escapeHtml(href)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 dark:bg-indigo-600 text-white hover:bg-slate-800 dark:hover:bg-indigo-500 transition-colors"
+                >
+                  <span>Mở nguồn</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function render() {
+        renderTabs();
+        renderCategoryBar();
+
+        const items = getFilteredItems();
+        els.resultCount.textContent = String(items.length);
+
+        const hasActiveFilters =
+          state.category !== 'Tất cả' || state.source !== 'all' || state.query.trim() !== '';
+        els.resetFiltersBtn.classList.toggle('hidden', !hasActiveFilters);
+        els.clearSearchBtn.classList.toggle('hidden', state.query.trim() === '');
+
+        if (hasActiveFilters) {
+          const parts = [];
+          if (state.category !== 'Tất cả') parts.push(state.category);
+          if (state.source !== 'all') parts.push(`Nguồn: ${state.source}`);
+          if (state.query.trim()) parts.push(`"${state.query.trim()}"`);
+          els.activeFilterSummary.textContent = `• ${parts.join(' • ')}`;
+        } else {
+          els.activeFilterSummary.textContent = '';
+        }
+
+        if (items.length === 0) {
+          els.cardsGrid.classList.add('hidden');
+          els.cardsGrid.classList.remove('grid');
+          els.emptyState.classList.remove('hidden');
+
+          if (state.activeTab === 'saved' && state.bookmarks.length === 0) {
+            els.emptyTitle.textContent = 'Chưa có mục nào được lưu';
+            els.emptyDesc.textContent = 'Nhấn nút "Lưu" trên bất kỳ thẻ công cụ nào để giữ lại trong trình duyệt và tra cứu nhanh bất cứ lúc nào.';
+            els.emptyActionBtn.textContent = 'Khám phá Mới hôm nay';
+            els.emptyActionBtn.dataset.mode = 'go-latest';
+          } else if (hasActiveFilters) {
+            els.emptyTitle.textContent = 'Không tìm thấy kết quả phù hợp';
+            els.emptyDesc.textContent = 'Thử từ khóa khác hoặc xóa bộ lọc danh mục/nguồn hiện tại.';
+            els.emptyActionBtn.textContent = 'Đặt lại bộ lọc';
+            els.emptyActionBtn.dataset.mode = 'reset';
+          } else {
+            els.emptyTitle.textContent = 'Chưa có dữ liệu mới trong mục này';
+            els.emptyDesc.textContent = 'Hệ thống tự động quét lúc 06:00 sáng hàng ngày. Bạn có thể chuyển sang tab "Kho báu đã lọc" để xem các mục trước đó.';
+            els.emptyActionBtn.textContent = 'Xem Kho báu đã lọc';
+            els.emptyActionBtn.dataset.mode = 'go-archive';
+          }
+          return;
+        }
+
+        els.emptyState.classList.add('hidden');
+        els.cardsGrid.classList.remove('hidden');
+        els.cardsGrid.classList.add('grid');
+        els.cardsGrid.innerHTML = items.map(buildCardHtml).join('');
+      }
+
+      function resetFilters() {
+        state.category = 'Tất cả';
+        state.source = 'all';
+        state.query = '';
+        els.searchInput.value = '';
+        els.sourceSelect.value = 'all';
+        render();
+      }
+
+      // Event Listeners
+      els.tabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.activeTab = btn.dataset.tab;
+          render();
+        });
+      });
+
+      els.categoryBar.addEventListener('click', (e) => {
+        const pill = e.target.closest('.cat-pill');
+        if (!pill) return;
+        state.category = pill.dataset.category;
+        render();
+      });
+
+      els.sourceSelect.addEventListener('change', (e) => {
+        state.source = e.target.value;
+        render();
+      });
+
+      els.sortSelect.addEventListener('change', (e) => {
+        state.sort = e.target.value;
+        render();
+      });
+
+      els.searchInput.addEventListener('input', (e) => {
+        state.query = e.target.value;
+        render();
+      });
+
+      els.clearSearchBtn.addEventListener('click', () => {
+        state.query = '';
+        els.searchInput.value = '';
+        els.searchInput.focus();
+        render();
+      });
+
+      els.resetFiltersBtn.addEventListener('click', resetFilters);
+
+      els.emptyActionBtn.addEventListener('click', () => {
+        const mode = els.emptyActionBtn.dataset.mode;
+        if (mode === 'go-latest') {
+          state.activeTab = 'latest';
+          resetFilters();
+        } else if (mode === 'go-archive') {
+          state.activeTab = 'archive';
+          resetFilters();
+        } else {
+          resetFilters();
+        }
+      });
+
+      els.cardsGrid.addEventListener('click', async (e) => {
+        const tagBtn = e.target.closest('.tag-chip');
+        if (tagBtn) {
+          state.query = tagBtn.dataset.tag;
+          els.searchInput.value = state.query;
+          render();
+          return;
+        }
+
+        const actionBtn = e.target.closest('[data-action]');
+        if (!actionBtn) return;
+
+        const action = actionBtn.dataset.action;
+        if (action === 'copy') {
+          const url = actionBtn.dataset.url;
+          try {
+            await navigator.clipboard.writeText(url);
+            showToast('Đã sao chép liên kết!');
+          } catch {
+            // Fallback copy
+            const ta = document.createElement('textarea');
+            ta.value = url;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('Đã sao chép liên kết!');
+          }
+        } else if (action === 'bookmark') {
+          const id = actionBtn.dataset.id;
+          const allPools = [
+            ...state.latestData.items,
+            ...state.archiveData.items,
+            ...state.bookmarks,
+          ];
+          const found = allPools.find((it) => it.id === id);
+          if (found) toggleBookmark(found);
+        }
+      });
+
+      els.themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('tech_radar_theme', isDark ? 'dark' : 'light');
+      });
+
+      els.refreshBtn.addEventListener('click', () => {
+        loadAllData();
+        showToast('Đang tải lại dữ liệu mới nhất...');
+      });
+
+      // Keyboard shortcut: press '/' to focus search
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== els.searchInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          const tag = (document.activeElement && document.activeElement.tagName) || '';
+          if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+            e.preventDefault();
+            els.searchInput.focus();
+          }
+        }
+      });
+
+      // Initial boot
+      loadAllData();
+    })();
+  </script>
+</body>
+</html>

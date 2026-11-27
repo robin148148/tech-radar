@@ -1,0 +1,74 @@
+{
+  "github": {
+    "enabled": true,
+    "topics": [
+      "agent-skills",
+      "mcp-server",
+      "self-hosted",
+      "automation",
+      "free-software",
+      "cli-tool",
+      "ai-tools"
+    ],
+    "days_back": 14,
+    "min_stars": 20,
+    "per_topic_limit": 8
+  },
+  "reddit": {
+    "enabled": true,
+    "subreddits": [
+      "selfhosted",
+      "opensource",
+      "LocalLLaMA",
+      "SideProject"
+    ],
+    "sort": "hot",
+    "limit_per_subreddit": 10,
+    "min_upvotes": 15
+  },
+  "hacker_news": {
+    "enabled": true,
+    "min_points": 50,
+    "hours_back": 48,
+    "limit": 25
+  },
+  "devto": {
+    "enabled": true,
+    "tags": [
+      "productivity",
+      "opensource",
+      "ai",
+      "tips"
+    ],
+    "top_days": 3,
+    "per_tag_limit": 8,
+    "min_reactions": 5
+  },
+  "custom_rss": [
+    {
+      "name": "Simon Willison's Weblog",
+      "url": "https://simonwillison.net/atom/everything/",
+      "enabled": true,
+      "limit": 6
+    },
+    {
+      "name": "GitHub Blog",
+      "url": "https://github.blog/feed/",
+      "enabled": true,
+      "limit": 6
+    },
+    {
+      "name": "Telegram Example Channel (t.me/s/...)",
+      "url": "https://t.me/s/durov",
+      "enabled": false,
+      "limit": 5
+    }
+  ],
+  "curation": {
+    "model": "gemini-2.5-flash",
+    "max_candidates": 45,
+    "min_score": 7,
+    "archive_limit": 500,
+    "seen_urls_limit": 5000
+  }
+}
