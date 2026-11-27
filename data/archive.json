@@ -1,120 +1,310 @@
 {
-  "updated_at": "2026-11-27T01:12:20Z",
-  "count": 24,
+  "updated_at": "2026-11-27T01:17:53Z",
+  "count": 30,
   "items": [
     {
-      "id": "458c04cd04ca",
-      "title": "morluto/rea",
-      "url": "https://github.com/morluto/rea",
-      "source": "GitHub",
-      "category": "AI Skills",
-      "score": 9,
-      "stars_or_votes": 479801,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Reverse engineer anything with agents, from app behavior down to native binaries.",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
-      "tags": [
-        "agent-skills",
-        "TypeScript",
-        "ai"
-      ],
-      "published_at": "2026-11-27T00:55:00Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
-    },
-    {
       "id": "c37165a31cd3",
-      "title": "n8n-io/n8n",
+      "title": "n8n - Nền tảng tự động hóa quy trình tích hợp AI",
       "url": "https://github.com/n8n-io/n8n",
       "source": "GitHub",
-      "category": "AI Skills",
+      "category": "Phần mềm miễn phí",
       "score": 9,
       "stars_or_votes": 212313,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
+      "summary_vi": "Nền tảng workflow automation tự host mạnh mẽ với hơn 400 integration có sẵn và khả năng tích hợp LLM nguyên bản. Cho phép kết hợp kéo thả trực quan với viết code tùy biến linh hoạt, thay thế hoàn hảo cho Zapier hay Make.",
+      "use_case_vi": "Tự động hóa pipeline CI/CD, đồng bộ dữ liệu giữa Jira/GitHub và Slack, hoặc dựng workflow xử lý ticket tự động bằng AI.",
       "tags": [
-        "mcp-server",
-        "TypeScript",
-        "ai"
+        "n8n",
+        "Automation",
+        "Self-Hosted"
       ],
       "published_at": "2026-11-27T00:48:27Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
     },
     {
       "id": "97dcab4759c8",
-      "title": "langgenius/dify",
+      "title": "Dify - Nền tảng phát triển ứng dụng AI & RAG mã nguồn mở",
       "url": "https://github.com/langgenius/dify",
       "source": "GitHub",
       "category": "AI Skills",
       "score": 9,
-      "stars_or_votes": 161958,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
+      "stars_or_votes": 161960,
+      "summary_vi": "Nền tảng mã nguồn mở trực quan hóa quy trình xây dựng AI Agent và pipeline RAG. Hỗ trợ tích hợp phong phú các mô hình LLM, vector database và công cụ ngoài, cho phép triển khai linh hoạt từ cloud đến self-hosted trên hạ tầng riêng.",
+      "use_case_vi": "Xây dựng hệ thống chatbot chăm sóc khách hàng nội bộ hoặc trợ lý hỏi đáp tài liệu kỹ thuật có kết nối dữ liệu doanh nghiệp.",
       "tags": [
-        "automation",
-        "Python",
-        "agent"
+        "Dify",
+        "RAG",
+        "Agentic AI"
       ],
-      "published_at": "2026-11-27T00:54:17Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
+      "published_at": "2026-11-27T01:12:56Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
     },
     {
       "id": "7c94eb734f17",
-      "title": "open-webui/open-webui",
+      "title": "Open WebUI - Giao diện tự host thân thiện cho LLM",
       "url": "https://github.com/open-webui/open-webui",
       "source": "GitHub",
-      "category": "AI Skills",
+      "category": "Phần mềm miễn phí",
       "score": 9,
       "stars_or_votes": 159648,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
+      "summary_vi": "Giao diện web giàu tính năng chạy hoàn toàn offline hoặc self-hosted, hỗ trợ kết nối trực tiếp với Ollama và OpenAI API. Cung cấp đầy đủ tính năng phân quyền người dùng, quản trị RAG, tích hợp web search và thực thi mã an toàn.",
+      "use_case_vi": "Dựng cổng giao tiếp AI nội bộ an toàn cho toàn công ty mà không lo rò rỉ dữ liệu ra dịch vụ bên thứ ba.",
       "tags": [
-        "self-hosted",
-        "Svelte",
-        "ai"
+        "Open WebUI",
+        "Ollama",
+        "LLM UI"
       ],
       "published_at": "2026-11-27T00:38:20Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
-    },
-    {
-      "id": "52d44a688882",
-      "title": "farion1231/cc-switch",
-      "url": "https://github.com/farion1231/cc-switch",
-      "source": "GitHub",
-      "category": "AI Skills",
-      "score": 9,
-      "stars_or_votes": 157428,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode,DeepSeek Harness and more. Only official website: ccswitch.io",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
-      "tags": [
-        "ai-tools",
-        "Rust",
-        "claude-code"
-      ],
-      "published_at": "2026-11-26T15:08:16Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
     },
     {
       "id": "c1af6b58492f",
-      "title": "browser-use/browser-use",
+      "title": "Browser-Use - Thư viện Python điều khiển trình duyệt bằng AI Agent",
       "url": "https://github.com/browser-use/browser-use",
       "source": "GitHub",
-      "category": "AI Skills",
+      "category": "Repo/Code",
       "score": 9,
       "stars_or_votes": 122157,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
+      "summary_vi": "Thư viện mã nguồn mở cho phép LLM tương tác trực tiếp với giao diện web giống như người dùng thật. Hỗ trợ tự động nhận diện element, click, cuộn trang, vượt anti-bot và trích xuất dữ liệu có cấu trúc từ các trang web phức tạp.",
+      "use_case_vi": "Tự động hóa tác vụ kiểm thử E2E trên trình duyệt hoặc cào dữ liệu từ các ứng dụng web dạng SPA yêu cầu tương tác phức tạp.",
       "tags": [
-        "ai-tools",
+        "Browser Agent",
         "Python",
-        "ai-agents"
+        "Web Automation"
       ],
       "published_at": "2026-11-26T23:16:54Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "1970f2aab6a8",
+      "title": "Unsloth - Bộ công cụ và UI tăng tốc Fine-tune LLM cục bộ",
+      "url": "https://github.com/unslothai/unsloth",
+      "source": "GitHub",
+      "category": "Repo/Code",
+      "score": 9,
+      "stars_or_votes": 80311,
+      "summary_vi": "Giải pháp huấn luyện và chạy thử LLM/Diffusion model trên máy cục bộ với tốc độ vượt trội và tiết kiệm bộ nhớ VRAM tối đa. Hỗ trợ định dạng GGUF, MLX cùng các kiến trúc mới nhất như DeepSeek-V3, Qwen và FLUX.",
+      "use_case_vi": "Fine-tune mô hình ngôn ngữ trên tập dữ liệu đặc thù của doanh nghiệp ngay trên một card đồ họa phổ thông.",
+      "tags": [
+        "Fine-Tuning",
+        "LLM",
+        "Optimization"
+      ],
+      "published_at": "2026-11-27T01:11:09Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "458c04cd04ca",
+      "title": "REA - AI Agent dịch ngược mã nguồn và nhị phân",
+      "url": "https://github.com/morluto/rea",
+      "source": "GitHub",
+      "category": "AI Skills",
+      "score": 8,
+      "stars_or_votes": 479803,
+      "summary_vi": "Công cụ ứng dụng AI agent chuyên biệt để tự động hóa quá trình reverse engineering từ hành vi ứng dụng đến tệp nhị phân native. Giúp kỹ sư bảo mật và lập trình viên phân tích nhanh cấu trúc phần mềm mà không cần thao tác thủ công phức tạp.",
+      "use_case_vi": "Hỗ trợ phân tích mã độc nhanh hoặc dịch ngược APK/native binary để kiểm tra lỗ hổng bảo mật.",
+      "tags": [
+        "Reverse Engineering",
+        "Security",
+        "AI Agent"
+      ],
+      "published_at": "2026-11-27T00:55:00Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "38c3408d933a",
+      "title": "Ponytail - Kỹ năng định hướng AI Agent tư duy tinh gọn",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "source": "GitHub",
+      "category": "AI Skills",
+      "score": 8,
+      "stars_or_votes": 199376,
+      "summary_vi": "Bộ cấu hình kỹ năng và system prompt cho AI coding agent rèn luyện tư duy của một kỹ sư kỳ cựu: ưu tiên sự tinh gọn và tái sử dụng mã nguồn. Ngăn chặn triệt để tình trạng AI tự sinh mã dư thừa hoặc đưa thêm các thư viện không cần thiết vào dự án.",
+      "use_case_vi": "Tích hợp vào prompt hệ thống của Claude Code hoặc Cursor để kiểm soát chất lượng mã nguồn do AI viết ra.",
+      "tags": [
+        "AI Skills",
+        "Claude Code",
+        "Clean Code"
+      ],
+      "published_at": "2026-11-22T02:31:58Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "52d44a688882",
+      "title": "CC-Switch - Ứng dụng Desktop quản lý môi trường AI Code CLI",
+      "url": "https://github.com/farion1231/cc-switch",
+      "source": "GitHub",
+      "category": "Phần mềm miễn phí",
+      "score": 8,
+      "stars_or_votes": 157428,
+      "summary_vi": "Ứng dụng đa nền tảng viết bằng Rust giúp chuyển đổi và cấu hình nhanh các công cụ AI coding agent như Claude Code, Codex và OpenCode. Đơn giản hóa việc quản trị API key, cấu hình môi trường và chuyển đổi giữa các mô hình lập trình.",
+      "use_case_vi": "Dễ dàng chuyển đổi linh hoạt giữa Claude Code và OpenCode khi chuyển giao dự án trên máy trạm cá nhân.",
+      "tags": [
+        "Claude Code",
+        "Developer Tools",
+        "Rust"
+      ],
+      "published_at": "2026-11-26T15:08:16Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "a5e43b1572bf",
+      "title": "Paperclip - Nền tảng điều phối và giám sát AI Agent trong doanh nghiệp",
+      "url": "https://github.com/paperclipai/paperclip",
+      "source": "GitHub",
+      "category": "Phần mềm miễn phí",
+      "score": 8,
+      "stars_or_votes": 117393,
+      "summary_vi": "Ứng dụng mã nguồn mở tập trung vào việc quản lý, giám sát và phân quyền thực thi cho các AI agent trong tổ chức. Giúp các nhóm kỹ thuật kiểm soát giới hạn tài nguyên, lịch sử hành động và tương tác giữa nhiều agent cùng lúc.",
+      "use_case_vi": "Thiết lập hệ thống giám sát và cấp quyền cho các autonomous agent tự động duyệt PR hoặc bảo trì hạ tầng.",
+      "tags": [
+        "Agent Orchestration",
+        "DevOps",
+        "Open Source"
+      ],
+      "published_at": "2026-11-26T19:03:37Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "24684c1ecca2",
+      "title": "Gemini-CLI - Trợ lý AI Agent Gemini trực tiếp trên Terminal",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "source": "GitHub",
+      "category": "Repo/Code",
+      "score": 8,
+      "stars_or_votes": 109197,
+      "summary_vi": "CLI agent mã nguồn mở đưa năng lực xử lý ngữ cảnh lớn của Gemini vào dòng lệnh terminal. Hỗ trợ đọc hiểu ngữ cảnh thư mục, giải thích lỗi log hệ thống, sinh lệnh bash và thao tác trực tiếp trên mã nguồn.",
+      "use_case_vi": "Debug nhanh log hệ thống trên server hoặc nhờ AI viết script shell ngay trong phiên làm việc SSH.",
+      "tags": [
+        "Gemini",
+        "CLI",
+        "Terminal Tools"
+      ],
+      "published_at": "2026-11-27T01:14:43Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "df11630e65be",
+      "title": "Scrapling - Framework cào dữ liệu Web thích ứng cao",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "source": "GitHub",
+      "category": "Repo/Code",
+      "score": 8,
+      "stars_or_votes": 106005,
+      "summary_vi": "Framework Python chuyên biệt cho web scraping từ request đơn lẻ đến crawl diện rộng với cơ chế né chặn bot hiệu quả. Tích hợp sẵn bộ phân tích thông minh giúp bóc tách dữ liệu bền vững ngay cả khi cấu trúc DOM bị thay đổi.",
+      "use_case_vi": "Thu thập dữ liệu định kỳ từ các trang thương mại điện tử hoặc tin tức có cơ chế chống bot nghiêm ngặt.",
+      "tags": [
+        "Web Scraping",
+        "Python",
+        "Crawler"
+      ],
+      "published_at": "2026-11-26T00:10:49Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "1df0de05ef3a",
+      "title": "Giải quyết vấn đề ảo giác khi dùng AI viết Release Notes từ Git Diff",
+      "url": "https://dev.to/necoz/why-your-ai-release-notes-hallucinate-the-why-vs-what-problem-in-git-history-5ch0",
+      "source": "Dev.to",
+      "category": "Mẹo & Thủ thuật",
+      "score": 8,
+      "stars_or_votes": 60,
+      "summary_vi": "Bài viết phân tích nguyên nhân LLM thường bịa đặt ngữ cảnh khi chỉ đọc raw git diff và đề xuất giải pháp kỹ thuật cụ thể. Hướng dẫn cách liên kết issue, commit metadata và kỹ thuật counterfactual evals để trích xuất đúng lý do thay đổi mã thay vì chỉ mô tả thay đổi bề mặt.",
+      "use_case_vi": "Tối ưu hóa pipeline CI/CD tự động sinh changelog chuẩn xác cho các bản phát hành sản phẩm lớn.",
+      "tags": [
+        "Git",
+        "Prompt Engineering",
+        "CI/CD"
+      ],
+      "published_at": "2026-11-24T16:30:00Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "57b03ec42d31",
+      "title": "Agent Host Protocol - Giao thức duy trì phiên AI Agent đa thiết bị",
+      "url": "https://github.blog/engineering/engineering-principles/building-the-agent-host-protocol-for-sessions-that-continue-across-devices/",
+      "source": "RSS",
+      "category": "Repo/Code",
+      "score": 8,
+      "stars_or_votes": 0,
+      "summary_vi": "Kiến trúc giao thức mở do GitHub công bố nhằm đồng bộ hóa trạng thái phiên làm việc của AI agent giữa IDE, ứng dụng di động và cloud. Giải quyết bài toán gián đoạn ngữ cảnh khi lập trình viên chuyển đổi không gian làm việc giữa các thiết bị.",
+      "use_case_vi": "Ứng dụng trong việc xây dựng các công cụ lập trình cộng tác hoặc tiếp tục task dang dở của agent từ điện thoại khi rời máy tính bàn.",
+      "tags": [
+        "Agent Protocol",
+        "GitHub",
+        "Architecture"
+      ],
+      "published_at": "2026-11-17T18:20:40Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "d44a29290b43",
+      "title": "sqlite3_rsync - Công cụ đồng bộ Snapshot SQLite an toàn qua mạng",
+      "url": "https://simonwillison.net/2026/Nov/26/sqlite3-rsync/",
+      "source": "RSS",
+      "category": "Repo/Code",
+      "score": 8,
+      "stars_or_votes": 0,
+      "summary_vi": "Công cụ chính thức từ SQLite cho phép sao chép snapshot cơ sở dữ liệu từ xa mà không gây gián đoạn các phiên ghi đang chạy. Sử dụng cơ chế tương tự rsync qua SSH nhưng tối ưu hóa hoàn toàn cho cấu trúc trang lưu trữ của SQLite.",
+      "use_case_vi": "Cấu hình sao lưu định kỳ live database SQLite từ server production về máy chủ backup mà không làm khóa dữ liệu.",
+      "tags": [
+        "SQLite",
+        "Backup",
+        "DevOps"
+      ],
+      "published_at": "2026-11-26T06:08:25Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "5e8eba5b15ac",
+      "title": "Ba bước ngoặt định hình năng lực Coding Agent trong 12 tháng qua",
+      "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+      "source": "RSS",
+      "category": "Mẹo & Thủ thuật",
+      "score": 8,
+      "stars_or_votes": 0,
+      "summary_vi": "Bài viết đúc kết sâu sắc từ Simon Willison về 3 điểm bùng phát thay đổi cách lập trình viên tương tác với LLM và coding agent. Cung cấp góc nhìn thực chiến về việc chuyển dịch từ việc xem AI như công cụ autocomplete sang vai trò cộng sự chủ động giải quyết vấn đề.",
+      "use_case_vi": "Cải tiến quy trình phát triển phần mềm trong nhóm kỹ thuật để tận dụng tối đa năng lực của AI agent thế hệ mới.",
+      "tags": [
+        "AI Engineering",
+        "Coding Agent",
+        "Productivity"
+      ],
+      "published_at": "2026-11-24T23:02:07Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
+    },
+    {
+      "id": "854fa5384658",
+      "title": "Nextcloud Office Desktop - Bộ ứng dụng văn phòng tự host trên máy tính",
+      "url": "https://nextcloud.com/blog/euro-office-comes-to-your-desktop-with-the-nextcloud-office-desktop-app/",
+      "source": "HN",
+      "category": "Phần mềm miễn phí",
+      "score": 7,
+      "stars_or_votes": 396,
+      "summary_vi": "Phiên bản desktop cho Nextcloud Office, mang trải nghiệm soạn thảo văn bản, bảng tính độc lập vào máy trạm nhưng vẫn đồng bộ với máy chủ riêng. Giúp doanh nghiệp làm chủ dữ liệu và không phụ thuộc vào Microsoft 365 hay Google Docs.",
+      "use_case_vi": "Triển khai giải pháp văn phòng bảo mật tuyệt đối cho nhân sự trong các tổ chức có yêu cầu cao về chủ quyền dữ liệu.",
+      "tags": [
+        "Nextcloud",
+        "Office",
+        "Self-Hosted"
+      ],
+      "published_at": "2026-11-26T11:50:49Z",
+      "fetched_at": "2026-11-27T01:14:54Z",
+      "is_curated": true
     },
     {
       "id": "dfefeb8d5a80",
@@ -202,23 +392,6 @@
       "is_curated": false
     },
     {
-      "id": "854fa5384658",
-      "title": "Nextcloud Office Desktop app",
-      "url": "https://nextcloud.com/blog/euro-office-comes-to-your-desktop-with-the-nextcloud-office-desktop-app/",
-      "source": "HN",
-      "category": "Phần mềm miễn phí",
-      "score": 8,
-      "stars_or_votes": 395,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Hacker News story with 395 points and 201 comments.",
-      "use_case_vi": "Cài đặt thử nghiệm hoặc tự triển khai (self-host) để thay thế các phần mềm trả phí hằng ngày.",
-      "tags": [
-        "hackernews"
-      ],
-      "published_at": "2026-11-26T11:50:49Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
-    },
-    {
       "id": "4e388d026241",
       "title": "Lazy Senior Dev Mode Made My App Smaller. Was It Better?",
       "url": "https://dev.to/necoz/lazy-senior-dev-mode-made-my-app-smaller-was-it-better-90i",
@@ -253,25 +426,6 @@
         "career"
       ],
       "published_at": "2026-11-24T04:00:44Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
-    },
-    {
-      "id": "1df0de05ef3a",
-      "title": "Why Your AI Release Notes Hallucinate: The \"Why vs What\" Problem in Git History",
-      "url": "https://dev.to/necoz/why-your-ai-release-notes-hallucinate-the-why-vs-what-problem-in-git-history-5ch0",
-      "source": "Dev.to",
-      "category": "AI Skills",
-      "score": 7,
-      "stars_or_votes": 60,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Passing raw git diffs to LLMs produces plausible but hallucinated changelogs. Here is why extracting the real \"why\" requires linked issues and counterfactual evals.",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
-      "tags": [
-        "ai",
-        "devops",
-        "github"
-      ],
-      "published_at": "2026-11-24T16:30:00Z",
       "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     },
@@ -405,44 +559,6 @@
         "visualization"
       ],
       "published_at": "2026-11-25T18:16:50Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
-    },
-    {
-      "id": "5e8eba5b15ac",
-      "title": "Three LLM inflection points in twelve months",
-      "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
-      "source": "RSS",
-      "category": "AI Skills",
-      "score": 7,
-      "stars_or_votes": 0,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] I gave a keynote at the AI Engineer Code Summit a couple of weeks ago, constructed around the idea that there have been three significant inflection points in the abilities of LLMs and coding agents in the past twelve months. Here's the video of the talk. In this post I'm going to pull out the major inflection point theme and interrogate it more deeply. Coding agents in November 2025 Today, November 24th 2026, is th…",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
-      "tags": [
-        "simon-willison-s-web",
-        "game-design",
-        "my-talks"
-      ],
-      "published_at": "2026-11-24T23:02:07Z",
-      "fetched_at": "2026-11-27T01:12:13Z",
-      "is_curated": false
-    },
-    {
-      "id": "57b03ec42d31",
-      "title": "Building the Agent Host Protocol for sessions that continue across devices",
-      "url": "https://github.blog/engineering/engineering-principles/building-the-agent-host-protocol-for-sessions-that-continue-across-devices/",
-      "source": "RSS",
-      "category": "AI Skills",
-      "score": 7,
-      "stars_or_votes": 0,
-      "summary_vi": "[Chế độ lọc thô - chưa qua Gemini AI] Discover how we built the open Agent Host Protocol to keep your agent sessions accessible across editors, apps, phones, and the cloud. The post Building the Agent Host Protocol for sessions that continue across devices appeared first on The GitHub Blog .",
-      "use_case_vi": "Kết hợp vào quy trình làm việc với AI Agent hoặc MCP để tự động hóa các tác vụ lặp lại.",
-      "tags": [
-        "github-blog",
-        "Engineering",
-        "Engineering principles"
-      ],
-      "published_at": "2026-11-17T18:20:40Z",
       "fetched_at": "2026-11-27T01:12:13Z",
       "is_curated": false
     }
