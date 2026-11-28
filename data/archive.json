@@ -1,7 +1,159 @@
 {
-  "updated_at": "2026-11-27T01:17:53Z",
-  "count": 30,
+  "updated_at": "2026-11-28T04:39:10Z",
+  "count": 38,
   "items": [
+    {
+      "id": "aebfbe56731b",
+      "title": "AI made self-hosting fun again",
+      "url": "https://janlukas.blog/posts/ai-self-hosting",
+      "source": "HN",
+      "category": "Mẹo & Thủ thuật",
+      "score": 8,
+      "stars_or_votes": 1107,
+      "summary_vi": "Bài viết chia sẻ kinh nghiệm thực tế về việc hồi sinh phong trào self-hosting nhờ sự trợ lực của AI. Thay vì vật lộn với các tài liệu hướng dẫn rời rạc, lập trình viên có thể tận dụng LLM để viết cấu hình Docker, gỡ lỗi mạng Linux và quản trị homelab mượt mà hơn.",
+      "use_case_vi": "Tận dụng AI làm trợ lý kỹ thuật để tăng tốc việc dựng homelab cá nhân và tự động hóa bảo trì hệ thống máy chủ tại nhà.",
+      "tags": [
+        "Self-Hosting",
+        "Homelab",
+        "DevOps"
+      ],
+      "published_at": "2026-11-26T21:47:45Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
+    {
+      "id": "97ebc0900ea3",
+      "title": "Learning to Play Vim: Sổ tay hướng dẫn Vim toàn diện",
+      "url": "http://themouseless.dev/vim/",
+      "source": "HN",
+      "category": "Mẹo & Thủ thuật",
+      "score": 8,
+      "stars_or_votes": 303,
+      "summary_vi": "Bộ tài liệu nguồn mở chất lượng cao được tác giả đúc kết và hoàn thiện trong suốt 4 năm dành cho người dùng Vim. Sách đi từ nền tảng tư duy modal editing đến các kỹ thuật điều hướng nâng cao, giúp biến việc dùng Vim thành phản xạ tự nhiên thay vì học vẹt câu lệnh.",
+      "use_case_vi": "Tài liệu hữu ích cho kỹ sư phần mềm muốn nâng cao năng suất thao tác phím và làm chủ môi trường soạn thảo terminal.",
+      "tags": [
+        "Vim",
+        "DevTools",
+        "Productivity"
+      ],
+      "published_at": "2026-11-26T14:44:22Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
+    {
+      "id": "274bbcc9715a",
+      "title": "AWS Well-Architected Review với AI Agent",
+      "url": "https://dev.to/aws/can-your-agent-review-your-cloud-architecture-4coh",
+      "source": "Dev.to",
+      "category": "AI Skills",
+      "score": 8,
+      "stars_or_votes": 19,
+      "summary_vi": "Bài viết giới thiệu kỹ năng tích hợp trong AWS Agent Toolkit giúp AI agent tự động rà soát kiến trúc đám mây theo khung chuẩn Well-Architected. Agent có khả năng đọc mã nguồn hạ tầng, đối chiếu tài liệu AWS chính thức và xuất báo cáo đánh giá rủi ro có bằng chứng rõ ràng.",
+      "use_case_vi": "Nhúng agent vào pipeline CI/CD để tự động kiểm toán bảo mật và tính tối ưu của mã nguồn Terraform hoặc AWS CDK.",
+      "tags": [
+        "AWS",
+        "AIAgent",
+        "CloudArchitecture"
+      ],
+      "published_at": "2026-11-25T20:32:18Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
+    {
+      "id": "a0439c16159a",
+      "title": "YouTube Ad Punisher",
+      "url": "https://github.com/antonpictures/youtube-punisher",
+      "source": "HN",
+      "category": "Repo/Code",
+      "score": 7,
+      "stars_or_votes": 540,
+      "summary_vi": "Dự án mã nguồn mở cung cấp cơ chế tự động tải lại trang khi phát hiện quảng cáo xuất hiện trên YouTube. Đây là một hướng tiếp cận thú vị nhằm vượt qua các thuật toán chống chặn quảng cáo ngày càng gắt gao của nền tảng.",
+      "use_case_vi": "Tham khảo mã nguồn để nghiên cứu kỹ thuật can thiệp DOM video hoặc cài đặt sử dụng như một giải pháp thay thế adblocker truyền thống.",
+      "tags": [
+        "OpenSource",
+        "JavaScript",
+        "BrowserExtension"
+      ],
+      "published_at": "2026-11-26T17:36:47Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
+    {
+      "id": "e2ac2e209969",
+      "title": "Moat: Giải pháp self-hosted thay thế OpenRouter",
+      "url": "https://commandcode.ai/moat",
+      "source": "HN",
+      "category": "Phần mềm miễn phí",
+      "score": 7,
+      "stars_or_votes": 323,
+      "summary_vi": "Moat là cổng API trung gian mã nguồn mở cho phép tự lưu trữ để thay thế OpenRouter, hỗ trợ gom nhiều mô hình LLM về một endpoint duy nhất. Công cụ giúp các đội ngũ kỹ thuật chủ động định tuyến request, quản lý hạn mức API key và bảo vệ quyền riêng tư dữ liệu.",
+      "use_case_vi": "Dựng làm gateway nội bộ cho dự án nhằm tối ưu hóa chi phí gọi API giữa các nhà cung cấp AI khác nhau.",
+      "tags": [
+        "LLM",
+        "APIGateway",
+        "Self-Hosted"
+      ],
+      "published_at": "2026-11-26T06:32:48Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
+    {
+      "id": "ca19a69c5223",
+      "title": "Quy tắc 3 bước thẩm định code sinh bởi AI",
+      "url": "https://dev.to/heinrichneb/i-stopped-trusting-done-from-my-ai-now-i-ask-three-questions-4lab",
+      "source": "Dev.to",
+      "category": "Mẹo & Thủ thuật",
+      "score": 7,
+      "stars_or_votes": 15,
+      "summary_vi": "Tác giả chia sẻ quy trình 3 bước kiểm thử thực tế giúp lập trình viên tránh bẫy unit test giả và logic sai lệch từ code AI. Bài viết đi kèm repository mẫu minh họa cách kiểm soát chất lượng đầu ra của các trợ lý lập trình tự động.",
+      "use_case_vi": "Áp dụng vào quy trình làm việc thường ngày với Cursor hoặc GitHub Copilot để ngăn ngừa lỗi tiềm ẩn trước khi merge mã nguồn.",
+      "tags": [
+        "AICoding",
+        "Testing",
+        "BestPractices"
+      ],
+      "published_at": "2026-11-26T07:00:00Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
+    {
+      "id": "3c8d74deff65",
+      "title": "Vá nóng nhân Linux trên AWS không cần reboot với Shirudo",
+      "url": "https://dev.to/aws-builders/testing-shirudo-on-aws-to-mitigate-a-linux-kernel-vulnerability-without-rebooting-76e",
+      "source": "Dev.to",
+      "category": "Mẹo & Thủ thuật",
+      "score": 7,
+      "stars_or_votes": 7,
+      "summary_vi": "Hướng dẫn thực chiến sử dụng công cụ Shirudo để giảm thiểu các lỗ hổng nhân Linux nghiêm trọng trên máy chủ AWS EC2 mà không phải khởi động lại. Giải pháp này giúp duy trì tính sẵn sàng cao (HA) cho các dịch vụ quan trọng trong khi vẫn đảm bảo an toàn thông tin.",
+      "use_case_vi": "Sử dụng cho kỹ sư DevOps và SRE để khắc phục nhanh các cảnh báo CVE khẩn cấp trên production mà không gây downtime.",
+      "tags": [
+        "DevOps",
+        "LinuxKernel",
+        "Security"
+      ],
+      "published_at": "2026-11-27T14:14:10Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
+    {
+      "id": "4fb8ef7a2b51",
+      "title": "datasette-mcp 0.4",
+      "url": "https://simonwillison.net/2026/Nov/27/datasette-mcp/",
+      "source": "RSS",
+      "category": "AI Skills",
+      "score": 7,
+      "stars_or_votes": 0,
+      "summary_vi": "Bản cập nhật của plugin datasette-mcp mang chuẩn Model Context Protocol (MCP) vào hệ sinh thái Datasette. Tiện ích này cho phép các trợ lý AI như Claude kết nối trực tiếp, khám phá lược đồ dữ liệu và thực thi truy vấn SQLite một cách an toàn.",
+      "use_case_vi": "Tích hợp cơ sở dữ liệu SQLite nội bộ vào AI agent thông qua giao thức MCP để phân tích dữ liệu tự động.",
+      "tags": [
+        "MCP",
+        "Datasette",
+        "SQLite"
+      ],
+      "published_at": "2026-11-27T00:26:17Z",
+      "fetched_at": "2026-11-28T04:37:13Z",
+      "is_curated": true
+    },
     {
       "id": "c37165a31cd3",
       "title": "n8n - Nền tảng tự động hóa quy trình tích hợp AI",
